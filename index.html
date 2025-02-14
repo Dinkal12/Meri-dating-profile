@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>Game Card</title>
+
+    <link rel="stylesheet" href="mydatingprofile.css">
+
+    <script src="https://kit.fontawesome.com/b0f29e9bfe.js" crossorigin="anonymous"></script>
+    <script src="mydatingprofile.js" defer></script>
+
+</head>
+<body>
+
+<div class="jayho">
+    <div class="card">
+        <div class="card__inner">
+            <div class="card__face card__face--front">
+                <h2> Click here </h2>
+            </div>
+            <div class="card__face card__face--back">
+                <div class="card__content">
+                    <div class="card__header">
+                        <img src="My img 1.jpg" alt="" class="pp" />
+                        <h2> Dating Profile </h2>
+                    </div>
+                    <div class="card__body">
+                        <h3> Dinkal Yaduwanshi </h3>
+                        <p> Madhya Pradesh <strong>Bhopal</strong> se hu, Indore ke <strong>Pohe se</strong> Agra ke <strong>Pethe tak</strong> sab khaya hai. <strong> Travel </strong> karna pasand hai. <strong> Khane </strong> Me koi specific choice nhi hai. <strong>Gym</strong> and <strong>Running</strong> dono karne me maja ata hai. Almost saare ache <strong>Anime</strong> dekh rakhe hai. Alag hi obesession hai <strong>Anime</strong> and <strong>Virat Kohli</strong> se</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="booy">
+    <div class="cox">
+        <div class="car">
+            <div class="car__inner">
+                <div class="car__face car__face--front">
+                    <h2> Jhut </h2>
+                </div>
+                <div class="car__face car__face--back">
+                    <div class="car__content">
+                        <div class="car__header">
+                          <img src="PHELA5.jpg" alt="Profile" class="profile-img" />
+                            <h2> Me bolta nhi </h2>
+                        </div>
+                        <div class="car__body">
+                            <h3> Isliye </h3>
+                            <p> Loyal me hu and Kafi caring bhi </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="floating-hearts"></div>
+        <div class="cox">
+            <div class="car">
+                <div class="car__inner">
+                    <div class="car__face car__face--front">
+                        <h2> Looks </h2>
+                    </div>
+                    <div class="car__face car__face--back">
+                        <div class="car__header">
+                            <img src="PHELA9.jpg" alt="Profile" class="profile-img" />
+                            <h2> Kafi ache Hai </h2>
+                        </div>
+                        <div class="car__body">
+                            <h3> baaki </h3>
+                            <p> Handsome to me bachpan se hu. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="car">
+                <div class="car__inner">
+                    <div class="car__face car__face--front">
+                        <h2> Haal </h2>
+                    </div>
+                    <div class="car__face car__face--back">
+                        <div class="car__header">
+                            <img src="PHELA7.jpg" alt="Profile" class="profile-img" />
+                            <h2> Badhiya Hai </h2>
+                        </div>
+                        <div class="car__body">
+                            <h3> * </h3>
+                            <p> Dil se bhi or paiso se abhi to nhi hai. <strong>Lekin ho Jayega</strong> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="car">
+                <div class="car__inner">
+                    <div class="car__face car__face--front">
+                        <h2> EXTRA </h2>
+                    </div>
+                    <div class="car__face car__face--back">
+                        <div class="car__header">
+                            <img src="PHELA.jpg" alt="Profile" class="profile-img" />
+                            <h2> </h2>
+                        </div>
+                        <div class="car__body">
+                            <h3></h3>
+                            <p> Bas karo itna kafi nhi hai kya. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<div class="puzzle">  
+    <div class="dabba">
+      <h1 class="lelel"> Complete it "Agar kar pao to"</h1>
+      <div class="puzzle-grid" id="puzzle-grid">
+        <!-- Blocks will be dynamically added here -->
+      </div>
+      <button id="shuffle-button">Shuffle Blocks</button>
+      <button id="submit-button">Submit</button>
+      <p id="message"></p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script> const grid = document.getElementById("puzzle-grid");
+    const shuffleButton = document.getElementById("shuffle-button");
+    const submitButton = document.getElementById("submit-button");
+    const message = document.getElementById("message");
+    
+    // Create an array to represent the blocks
+    const blocks = Array.from({ length: 8 }, (_, i) => i + 1);
+    blocks.push(null); // Empty space
+    
+    // Function to render the grid
+    function renderGrid() {
+      grid.innerHTML = "";
+      blocks.forEach((block, index) => {
+        const blockElement = document.createElement("div");
+        if (block) {
+          blockElement.style.backgroundImage = `url('https://png.pngtree.com/png-clipart/20210309/original/pngtree-happy-valentine-day-red-cupid-png-image_5815261.jpg')`;
+          blockElement.style.backgroundPosition = `-${(block - 1) % 3 * 100}px -${Math.floor((block - 1) / 3) * 100}px`;
+        } else {
+          blockElement.style.backgroundColor = "#fff";
+          blockElement.style.border = "none";
+        }
+        blockElement.addEventListener("click", () => moveBlock(index));
+        grid.appendChild(blockElement);
+      });
+    }
+    
+    // Function to move a block
+    function moveBlock(index) {
+      const emptyIndex = blocks.indexOf(null);
+      const row = Math.floor(index / 3);
+      const col = index % 3;
+      const emptyRow = Math.floor(emptyIndex / 3);
+      const emptyCol = emptyIndex % 3;
+    
+      if (
+        (row === emptyRow && Math.abs(col - emptyCol) === 1) ||
+        (col === emptyCol && Math.abs(row - emptyRow) === 1)
+      ) {
+        // Swap the clicked block with the empty space
+        [blocks[index], blocks[emptyIndex]] = [blocks[emptyIndex], blocks[index]];
+        renderGrid();
+      }
+    }
+    
+    // Function to shuffle the blocks
+    function shuffleBlocks() {
+      for (let i = blocks.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [blocks[i], blocks[j]] = [blocks[j], blocks[i]];
+      }
+      renderGrid();
+      message.textContent = "";
+    }
+    
+    // Function to check if the puzzle is solved
+    function checkWin() {
+      const isSolved = blocks.slice(0, 8).every((block, index) => block === index + 1);
+      if (isSolved) {
+        message.textContent = "Congratulations! You solved the puzzle! 🎉";
+        confetti({
+          particleCount: 100,
+          spread: 70,
+          origin: { y: 0.6 },
+        });
+      } else {
+        message.textContent = "Oops! Try again. 💔";
+      }
+    }
+    
+    // Event listener for the shuffle button
+    shuffleButton.addEventListener("click", shuffleBlocks);
+    
+    // Event listener for the submit button
+    submitButton.addEventListener("click", checkWin);
+    
+    // Initialize the game
+    shuffleBlocks();</script>
+
+  </div>  
+
+  <div class="calculator">
+    <div class="contai">
+      <h1>❤️ Uper wale ke sanket ko samjho ❤️</h1>
+      <p>Find out how strong your love is!</p>
+      <form id="loveForm">
+        <input type="text" id="name1" placeholder="Your Name" required>
+        <input type="text" id="name2" placeholder="Your Crush's Name" required>
+        <button type="submit">Calculate Love</button>
+      </form>
+      <div id="result" class="result"></div>
+    </div>
+    <div id="crackers"></div>
+  </div>
+  
+  <script>
+    document.getElementById('loveForm').addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent form submission
+      
+        // Get input values
+        const name1 = document.getElementById('name1').value.trim();
+        const name2 = document.getElementById('name2').value.trim();
+      
+        // Check if names are entered
+        if (!name1 || !name2) {
+          alert('Please enter both names!');
+          return;
+        }
+      
+        // Calculate love percentage
+        const loveScore = calculateLove(name1, name2);
+      
+        // Display result
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `
+          <p>💖 ${name1} and ${name2}'s love percentage is: ${loveScore}% 💖</p>
+          <p>${getMessage(loveScore)}</p>
+        `;
+      
+        // Add celebratory effects based on score
+        const crackersDiv = document.getElementById('crackers');
+        crackersDiv.innerHTML = ''; // Clear previous crackers
+      
+        if (loveScore >= 90) {
+          showCrackers(30); // Show more crackers for 90% and above
+        } else if (loveScore >= 80) {
+          showCrackers(15); // Show fewer crackers for 80% and above
+        }
+      });
+      
+      function calculateLove(name1, name2) {
+        // Combine names and convert to lowercase
+        const combinedNames = (name1 + name2).toLowerCase().replace(/\s/g, '');
+      
+        // Calculate a "love score" based on the length of the names
+        let loveScore = combinedNames.length * 5;
+      
+        // Add randomness for fun
+        loveScore += Math.floor(Math.random() * 21) - 10; // Random between -10 and +10
+      
+        // Ensure score is between 0 and 100
+        loveScore = Math.max(0, Math.min(loveScore, 100));
+      
+        return loveScore;
+      }
+      
+      function getMessage(score) {
+        if (score >= 90) {
+          return 'Wow! Soulmates! ❤️❤️❤️';
+        } else if (score >= 80) {
+          return 'Amazing! True love! 💕';
+        } else if (score >= 50) {
+          return 'A strong connection! 💖';
+        } else {
+          return 'Maybe there\'s still a spark? 💔';
+        }
+      }
+      
+      function showCrackers(count) {
+        const crackersDiv = document.getElementById('crackers');
+        for (let i = 0; i < count; i++) {
+          const cracker = document.createElement('div');
+          cracker.classList.add('cracker');
+          cracker.style.left = `${Math.random() * 100}vw`;
+          cracker.style.top = `${Math.random() * 100}vh`;
+          cracker.style.animationDelay = `${Math.random() * 1}s`;
+          crackersDiv.appendChild(cracker);
+        }
+      }</script>
+  
+
+  <div class="valentine-container">
+    <!-- Floating Hearts & Emojis -->
+    <div class="floating-heart">❤</div>
+    <div class="floating-heart">💖</div>
+    <div class="floating-heart">💘</div>
+    <div class="floating-heart">💞</div>
+    <div class="floating-heart">🥰</div>
+    <div class="floating-heart">💓</div>
+  
+    <!-- Book Container -->
+    <div class="book">
+        <div class="page" onclick="flipPage(this)">
+            <span class="heart-text">💘 Happy Valentine's Day! 💘</span>
+        </div>
+        <div class="page" onclick="flipPage(this)">
+            <span class="heart-text">💕 To all Those 💕</span>
+        </div>
+        <div class="page" onclick="flipPage(this)">
+            <span class="heart-text">❤ Who are single ❤</span>
+        </div>
+        <div class="page" onclick="flipPage(this)">
+            <span class="heart-text">💌 And lonely till Now 💌</span>
+        </div>
+    </div>
+    
+    <a href="try.html"> 
+      <button class="bsdk"> Click here </button>
+  </a>
+  </div>
+
+  
+
+</body>
+</html>

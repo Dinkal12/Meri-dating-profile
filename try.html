@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine's Day</title>
+    <style>
+        body {
+            font-family: 'Pacifico', cursive;
+            background-image: url(https://img.freepik.com/premium-vector/hearts-strawberries-love-potion-envelope-chocolate-covered-strawberries-bear-balloon_645979-343.jpg?semt=ais_hybrid);
+            /* background: linear-gradient(135deg, #1a1a1a, #2c3e50); Dark romantic night background */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            color: white;
+        }
+        h1 {
+            color: #e12c2c; /* Romantic pink color */
+            background-color: #ffffff;
+            border-radius: 35px;
+            padding: 7px 15px; 
+            font-size: 4em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .button-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        #yesButton {
+            background-color: #4caf50;
+            color: white;
+        }
+        #noButton {
+            background-color: #f44336;
+            color: white;
+            position: relative;
+        }
+        .decorations {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .decorations span {
+            position: absolute;
+            font-size: 2em;
+            animation: float 6s infinite ease-in-out;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(20deg);
+            }
+        }
+        .celebration {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3em;
+            opacity: 0;
+            pointer-events: none;
+            animation: pop 1s ease-out;
+        }
+        @keyframes pop {
+            0% {
+                opacity: 1;
+                transform: translate(-50%, -50%) scale(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50%) scale(2);
+            }
+        }
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #ff0;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            animation: confetti-fall 2s linear infinite;
+        }
+        @keyframes confetti-fall {
+            0% {
+                transform: translateY(-100vh) rotate(0deg);
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+            }
+        }
+        .background-celebration {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 5em;
+            color: gold;
+            opacity: 0;
+            animation: celebration-burst 1.5s ease-out infinite;
+        }
+        @keyframes celebration-burst {
+            0% {
+                opacity: 1;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 0.5;
+                transform: scale(1.5);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(2);
+            }
+        }
+        .cupid-image {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: auto;
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        .audio-container {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            animation: fadeIn 2s ease-in-out forwards;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Will you be my Valentine? 💖</h1>
+    <div class="button-container">
+        <button id="yesButton" class="button">YES</button>
+        <button id="noButton" class="button" onmouseover="startMoving()" onmouseout="stopMoving()">NO</button>
+    </div>
+
+    <div class="decorations">
+        <!-- Floating hearts and roses -->
+        <span style="left: 5%; top: 10%;">💖</span>
+        <span style="left: 15%; top: 30%;">🌹</span>
+        <span style="left: 25%; top: 50%;">💖</span>
+        <span style="left: 35%; top: 70%;">🌹</span>
+        <span style="left: 45%; top: 20%;">💖</span>
+        <span style="left: 55%; top: 40%;">🌹</span>
+        <span style="left: 65%; top: 60%;">💖</span>
+        <span style="left: 75%; top: 80%;">🌹</span>
+        <span style="left: 85%; top: 10%;">💖</span>
+        <span style="left: 95%; top: 30%;">🌹</span>
+        <span style="left: 10%; top: 90%;">💖</span>
+        <span style="left: 20%; top: 50%;">🌹</span>
+        <span style="left: 30%; top: 20%;">💖</span>
+        <span style="left: 40%; top: 80%;">🌹</span>
+        <span style="left: 50%; top: 10%;">💖</span>
+        <span style="left: 60%; top: 40%;">🌹</span>
+        <span style="left: 70%; top: 70%;">💖</span>
+        <span style="left: 80%; top: 30%;">🌹</span>
+        <span style="left: 90%; top: 60%;">💖</span>
+        <span style="left: 100%; top: 90%;">🌹</span>
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="valentineAudio" controls loop style="display: none;">
+        <source src="videoplayback.m4a" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        let moveInterval;
+
+        function startMoving() {
+            const noButton = document.getElementById('noButton');
+            moveInterval = setInterval(() => {
+                const x = Math.random() * (window.innerWidth - noButton.offsetWidth);
+                const y = Math.random() * (window.innerHeight - noButton.offsetHeight);
+                noButton.style.position = 'absolute';
+                noButton.style.left = `${x}px`;
+                noButton.style.top = `${y}px`;
+            }, 50); // Move even faster (50ms interval)
+        }
+
+        function stopMoving() {
+            clearInterval(moveInterval);
+        }
+
+        const yesButton = document.getElementById('yesButton');
+        yesButton.addEventListener('click', () => {
+            // Play the audio
+            const audio = document.getElementById('valentineAudio');
+            audio.play().catch(() => {
+                // Handle error if autoplay is blocked
+                alert("Click 'YES' again to play the audio!");
+            });
+
+            // Continuous party popper animation
+            setInterval(() => {
+                const celebration = document.createElement('div');
+                celebration.className = 'celebration';
+                celebration.innerHTML = '🎉🎉🎉';
+                document.body.appendChild(celebration);
+                setTimeout(() => {
+                    celebration.remove();
+                }, 1000);
+            }, 300); // Faster interval for more celebration
+
+            // Continuous confetti animation
+            setInterval(() => {
+                for (let i = 0; i < 50; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = `${Math.random() * 100}vw`;
+                    confetti.style.animationDelay = `${Math.random() * 2}s`;
+                    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    document.body.appendChild(confetti);
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 2000);
+                }
+            }, 500); // Faster interval for more confetti
+
+            // Background celebration
+            const backgroundCelebration = document.createElement('div');
+            backgroundCelebration.className = 'background-celebration';
+            backgroundCelebration.innerHTML = '💥💥💥';
+            document.body.appendChild(backgroundCelebration);
+
+            // Add Cupid image
+            const cupidImage = document.createElement('img');
+            cupidImage.src = 'https://i.imgur.com/7QZ8Q2M.png'; // Replace with your Cupid image URL
+            cupidImage.className = 'cupid-image';
+            document.body.appendChild(cupidImage);
+
+            // Elevate celebration with a message
+            const message = document.createElement('div');
+            message.className = 'celebration';
+            message.innerHTML = 'Yay! You made my day! 💖';
+            message.style.fontSize = '2em';
+            message.style.color = '#ff6f61';
+            document.body.appendChild(message);
+            setTimeout(() => {
+                message.remove();
+            }, 3000);
+
+            alert('Yay! You made my day! 💖');
+        });
+    </script>
+</body>
+</html>
